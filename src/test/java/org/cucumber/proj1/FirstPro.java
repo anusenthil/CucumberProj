@@ -16,6 +16,7 @@ public class FirstPro {
 		System.setProperty("webdriver.chrome.driver", "E:\\Selenium\\Day1\\CucumberProj\\drivers\\chromedriver1.exe");
 		driver=new ChromeDriver();
 		driver.get("http://demo.guru99.com/telecom/");
+		driver.manage().window().maximize();
 		}
 
 	@Given("user should click add customer link")
@@ -23,7 +24,7 @@ public class FirstPro {
 	    driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
 	}
 
-	@When("user provide valid input")
+	/*@When("user provide valid input")
 	public void user_provide_valid_input() {
 	    driver.findElement(By.xpath("//label[text()='Done']")).click();
 	    driver.findElement(By.id("fname")).sendKeys("Anu");
@@ -33,6 +34,20 @@ public class FirstPro {
 	    driver.findElement(By.id("telephoneno")).sendKeys("1234567890");
 	    driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
+*/
+	
+	@When("user provide valid input{string},{string},{string},{string},{string}")
+	public void user_provide_valid_input(String fname, String lname, String gmail, String address, String phoneno) {
+		 driver.findElement(By.xpath("//label[text()='Done']")).click();
+		    driver.findElement(By.id("fname")).sendKeys(fname);
+		    driver.findElement(By.id("lname")).sendKeys(lname);
+		    driver.findElement(By.id("email")).sendKeys(gmail);
+		    driver.findElement(By.xpath("//textarea[@name='addr']")).sendKeys(address);
+		    driver.findElement(By.id("telephoneno")).sendKeys(phoneno);
+		    driver.findElement(By.xpath("//input[@type='submit']")).click();
+	    
+	}
+
 
 	@Then("to verify the customer id is displayed")
 	public void to_verify_the_customer_id_is_displayed() {
