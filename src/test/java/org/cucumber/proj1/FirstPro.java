@@ -1,5 +1,7 @@
 package org.cucumber.proj1;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +38,7 @@ public class FirstPro {
 	}
 */
 	
-	@When("user provide valid input{string},{string},{string},{string},{string}")
+	/*@When("user provide valid input{string},{string},{string},{string},{string}")
 	public void user_provide_valid_input(String fname, String lname, String gmail, String address, String phoneno) {
 		 driver.findElement(By.xpath("//label[text()='Done']")).click();
 		    driver.findElement(By.id("fname")).sendKeys(fname);
@@ -46,6 +48,20 @@ public class FirstPro {
 		    driver.findElement(By.id("telephoneno")).sendKeys(phoneno);
 		    driver.findElement(By.xpath("//input[@type='submit']")).click();
 	    
+	}
+*/
+
+	@When("user provide valid input")
+	public void user_provide_valid_input(io.cucumber.datatable.DataTable dataTable) {
+		List<String>onedimen = dataTable.asList(String.class);
+		 	driver.findElement(By.xpath("//label[text()='Done']")).click();
+		    driver.findElement(By.id("fname")).sendKeys(onedimen.get(0));
+		    driver.findElement(By.id("lname")).sendKeys(onedimen.get(1));
+		    driver.findElement(By.id("email")).sendKeys(onedimen.get(2));
+		    driver.findElement(By.xpath("//textarea[@name='addr']")).sendKeys(onedimen.get(3));
+		    driver.findElement(By.id("telephoneno")).sendKeys(onedimen.get(4));
+		    driver.findElement(By.xpath("//input[@type='submit']")).click();
+    
 	}
 
 
