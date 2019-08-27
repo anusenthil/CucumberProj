@@ -1,6 +1,7 @@
 package org.cucumber.proj1;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -50,8 +51,8 @@ public class FirstPro {
 	    
 	}
 */
-
-	@When("user provide valid input")
+	//<One Dimensional List>
+	/*@When("user provide valid input")
 	public void user_provide_valid_input(io.cucumber.datatable.DataTable dataTable) {
 		List<String>onedimen = dataTable.asList(String.class);
 		 	driver.findElement(By.xpath("//label[text()='Done']")).click();
@@ -62,8 +63,21 @@ public class FirstPro {
 		    driver.findElement(By.id("telephoneno")).sendKeys(onedimen.get(4));
 		    driver.findElement(By.xpath("//input[@type='submit']")).click();
     
-	}
+	}*/
+	//<One Dimensional Map>
+	@When("user provide valid input")
+	public void user_provide_valid_input(io.cucumber.datatable.DataTable dataTable) {
+		Map<String, String>onedieMap = dataTable.asMap(String.class,String.class);
+		driver.findElement(By.xpath("//label[text()='Done']")).click();
+	    driver.findElement(By.id("fname")).sendKeys(onedieMap.get("fname"));
+	    driver.findElement(By.id("lname")).sendKeys(onedieMap.get("lname"));
+	    driver.findElement(By.id("email")).sendKeys(onedieMap.get("gmail"));
+	    driver.findElement(By.xpath("//textarea[@name='addr']")).sendKeys(onedieMap.get("address"));
+	    driver.findElement(By.id("telephoneno")).sendKeys(onedieMap.get("phno"));
+	    driver.findElement(By.xpath("//input[@type='submit']")).click();
 
+		
+	}
 
 	@Then("to verify the customer id is displayed")
 	public void to_verify_the_customer_id_is_displayed() {
