@@ -98,7 +98,7 @@ public class FirstPro {
 
 	}
 
-	@When("user provide valid input and sumbit")
+	/*@When("user provide valid input and sumbit")
 	public void user_provide_valid_input_and_sumbit(io.cucumber.datatable.DataTable dataTable) {
 		List<List<String>> twodimen = dataTable.asLists(String.class);
 		driver.findElement(By.id("rental1")).sendKeys(twodimen.get(0).get(0));
@@ -109,7 +109,21 @@ public class FirstPro {
 	    driver.findElement(By.id("inter_charges")).sendKeys(twodimen.get(0).get(5));
 	    driver.findElement(By.id("sms_charges")).sendKeys(twodimen.get(2).get(6));
 	    driver.findElement(By.xpath("//input[@name='submit']")).click();
-	    }
+	    }*/
+	@When("user provide valid input and sumbit")
+	public void user_provide_valid_input_and_sumbit(io.cucumber.datatable.DataTable dataTable) {
+		List<Map<String, String>> twodiMap = dataTable.asMaps(String.class, String.class);
+		driver.findElement(By.id("rental1")).sendKeys(twodiMap.get(0).get("mnthrental"));
+	    driver.findElement(By.id("local_minutes")).sendKeys(twodiMap.get(0).get("lmint"));
+	    driver.findElement(By.id("inter_minutes")).sendKeys(twodiMap.get(0).get("intermint"));
+	    driver.findElement(By.id("sms_pack")).sendKeys(twodiMap.get(1).get("smspack"));
+	    driver.findElement(By.id("minutes_charges")).sendKeys(twodiMap.get(1).get("lmintchrg"));
+	    driver.findElement(By.id("inter_charges")).sendKeys(twodiMap.get(0).get("intmintchrg"));
+	    driver.findElement(By.id("sms_charges")).sendKeys(twodiMap.get(2).get("smschrg"));
+	    driver.findElement(By.xpath("//input[@name='submit']")).click();
+	    
+	}
+
 
 	@Then("to verify success message is displayed")
 	public void to_verify_success_message_is_displayed() {
