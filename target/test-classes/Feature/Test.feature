@@ -6,6 +6,6 @@ Feature: Add customer
   Scenario: Generate an customer ID
     Given user should launch browser
     And user should click add customer link
-    When user provide valid input 
+    When user provide valid in
      Then to verify the customer id is displayed
    

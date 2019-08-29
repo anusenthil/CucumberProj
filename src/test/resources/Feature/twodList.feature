@@ -6,7 +6,7 @@ Feature: Add Tariff Plan
   Scenario: Getting successfully add message
     Given user should launch the browser
     And user should clik add tariff plan
-    When user provide valid input and sumbit
+    When user provide valid input and sumbit1
       | 500 | 10000 |  5000 | 300 | 1 | 10 | 1 |
       | 399 |  1000 |  1000 | 100 | 2 | 15 | 2 |
       | 599 |  5000 | 10000 | 250 | 2 |  9 | 3 |
