@@ -98,8 +98,13 @@ public class FirstPro {
 
 	}
 
+<<<<<<< HEAD
 	@When("user provide valid input and sumbit1")
 	public void user_provide_valid_input_and_sumbit1(io.cucumber.datatable.DataTable dataTable) {
+=======
+	/*@When("user provide valid input and sumbit")
+	public void user_provide_valid_input_and_sumbit(io.cucumber.datatable.DataTable dataTable) {
+>>>>>>> 00bfbd445213fca5e44591c6d7fa0b1bc86300ff
 		List<List<String>> twodimen = dataTable.asLists(String.class);
 		driver.findElement(By.id("rental1")).sendKeys(twodimen.get(0).get(0));
 	    driver.findElement(By.id("local_minutes")).sendKeys(twodimen.get(0).get(1));
@@ -109,7 +114,11 @@ public class FirstPro {
 	    driver.findElement(By.id("inter_charges")).sendKeys(twodimen.get(0).get(5));
 	    driver.findElement(By.id("sms_charges")).sendKeys(twodimen.get(2).get(6));
 	    driver.findElement(By.xpath("//input[@name='submit']")).click();
+<<<<<<< HEAD
 	    }
+=======
+	    }*/
+>>>>>>> 00bfbd445213fca5e44591c6d7fa0b1bc86300ff
 	@When("user provide valid input and sumbit")
 	public void user_provide_valid_input_and_sumbit(io.cucumber.datatable.DataTable dataTable) {
 		List<Map<String, String>> twodiMap = dataTable.asMaps(String.class, String.class);
